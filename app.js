@@ -3,7 +3,7 @@ let songs;
 let currFolder;
 async function getSongs(folder) {
   currFolder = folder;
-  let a = await fetch(`https://suman2240.github.io/msan/${folder}/`);
+  let a = await fetch(`https://github.com/suman2240/msan/tree/master/${folder}/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -63,7 +63,7 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbums() {
-  let a = await fetch(`https://suman2240.github.io/msan/songs/`);
+  let a = await fetch(`https://github.com/suman2240/msan/tree/master/songs`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -110,14 +110,14 @@ async function displayAlbums() {
   }
   Array.from(document.getElementsByClassName("card")).forEach((e) => {
     e.addEventListener("click", async (item) => {
-      songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
+      songs = await getSongs(`https://github.com/suman2240/msan/tree/master/songs/${item.currentTarget.dataset.folder}`);
       playMusic(songs[0]);
     });
   });
 }
 
 async function main() {
-  await getSongs(`songs/bhakti`);
+  await getSongs(`https://github.com/suman2240/msan/tree/master/songs/bhakti`);
   playMusic(songs[0], true);
 
   displayAlbums();
